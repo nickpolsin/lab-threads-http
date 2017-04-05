@@ -32,6 +32,7 @@ public class Sorting
 			}
 		}
 		while(!sorted);
+
 	}
 
 	
@@ -130,6 +131,7 @@ public class Sorting
 			mergeSort(right);
 			merge(left,right,list);
 		}
+		
 	}
 
 	/**
@@ -242,6 +244,7 @@ public class Sorting
 	public static void quickSort(Comparable[] list)
 	{
 		quickSort(list,0,list.length-1);
+	
 	}
 	
 	/**

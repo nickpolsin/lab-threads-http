@@ -21,16 +21,40 @@ public class SortRacer {
 		nums = shuffled((int)Math.pow(10,7), 448); //a list of shuffled 10 million numbers
 
 		System.out.println("Starting merge sort at "+dateFormat.format(new Date()));
-		Sorting.mergeSort(nums);
+		Thread t = new Thread(new MergeSortRun());
+		t.start();
 		System.out.println("Merge sort finished at "+dateFormat.format(new Date())+" !");
 
 		
 		/** Quick Sort **/
 		nums = shuffled((int)Math.pow(10,7), 448); //a list of shuffled 10 million numbers
 		System.out.println("Starting quicksort at "+dateFormat.format(new Date()));
-		Sorting.quickSort(nums);
+		Thread t2 = new Thread(new QuickSortRun());
+		t2.start();
 		System.out.println("Quicksort finished at "+dateFormat.format(new Date())+" !");
+		
+
 	}
+	public static class QuickSortRun implements Runnable{
+			public QuickSortRun(){
+			}
+			public void run(){
+				Integer[] nums = shuffled((int)Math.pow(10,7), 448);
+				System.out.println("Quick Sort starting...");
+				Sorting.quickSort(nums);
+				System.out.println("Quick Sort finished.");
+			}
+		}
+	public static class MergeSortRun implements Runnable{
+			public MergeSortRun(){
+			}
+			public void run(){
+				Integer[] nums = shuffled((int)Math.pow(10,7), 448);
+				System.out.println("Merge Sort starting...");
+				Sorting.mergeSort(nums);
+				System.out.println("Merge Sort finished.");
+			}
+		}
 	
 	
 	/**

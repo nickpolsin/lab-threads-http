@@ -18,6 +18,20 @@ import java.util.Scanner;
  */
 public class MovieDownloader {
 
+
+	/*
+	* The "try" block attempts to append the movie query supplied by the user
+	* the the url to search ombdapi for the movie. It will catch an 
+	* UnsupportedEncodingException if the supplied movie is an incorrect format.
+	* 
+	* This url string is then passed in a HTTP GET request. The results obtained from
+	* this GET request are formatted into JSON. The method catches an IOException.
+	* 
+	* After the try block executes, the finally block disconnects from the url connection
+	* and closes the reader. 
+	* 
+	* The String[] of movies related to the user query is returned.
+	*/
 	public static String[] downloadMovieData(String movie) {
 
 		//construct the url for the omdbapi API
@@ -83,7 +97,12 @@ public class MovieDownloader {
 		return movies;
 	}
 
-
+	/*
+	* The main method prompts the user to enter a movie to search 
+	* the ombdapi for relevant results. As long as the user does not
+	* enter a 'q', the results will print out to the user. If the user
+	* enters a 'q', the method will end.
+	*/
 	public static void main(String[] args) 
 	{
 		Scanner sc = new Scanner(System.in);
